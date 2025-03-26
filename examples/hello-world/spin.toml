@@ -10,6 +10,5 @@ version = "0.1.0"
 component = "hello-world"
 
 [component.hello-world]
-source = "target/wasm32-wasi/release/hello_world.wasm"
-build = ["cargo component build --target wasm32-wasi --release"]
-
+source = "target/wasm32-wasip1/release/hello_world.wasm"
+build = ["cargo component build --target wasm32-wasip1 --release"]

@@ -93,19 +93,28 @@ impl CommandTrigger {
 
         let (instance, mut store) = instance_builder.instantiate(()).await?;
 
-        let func = {
-            let instance_export = instance
-                .get_export(&mut store, None, "wasi:cli/run@0.2.0")
-                .context("failed to find the wasi:cli/run@0.2.0 instance in component")?;
+        let versions = ["0.2.3", "0.2.2", "0.2.1", "0.2.0"];
+        let mut func = None;
 
-            let func_export = instance
-                .get_export(&mut store, Some(&instance_export), "run")
-                .context("failed to find the \"run\" function in wasi:cli/run@0.2.0 instance")?;
+        for version in versions {
+            if let Some(instance_export) =
+                instance.get_export(&mut store, None, &format!("wasi:cli/run@{}", version))
+            {
+                if let Some(func_export) =
+                    instance.get_export(&mut store, Some(&instance_export), "run")
+                {
+                    if let Ok(typed_func) =
+                        instance.get_typed_func::<(), (Result<(), ()>,)>(&mut store, func_export)
+                    {
+                        func = Some(typed_func);
+                        break;
+                    }
+                }
+            }
+        }
 
-            instance
-                .get_typed_func::<(), (Result<(), ()>,)>(&mut store, func_export)
-                .context("failed to get typed \"run\" function")?
-        };
+        let func = func
+            .context("failed to find a compatible wasi:cli/run instance with a \"run\" function")?;
         let _ = func.call_async(&mut store, ()).await?;
 
         Ok(())

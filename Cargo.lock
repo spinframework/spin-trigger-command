@@ -5406,6 +5406,7 @@ dependencies = [
  "spin-trigger",
  "tokio",
  "tracing",
+ "wasmtime-wasi",
 ]
 
 [[package]]

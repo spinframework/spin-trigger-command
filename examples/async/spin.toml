@@ -10,6 +10,6 @@ description = ""
 component = "job"
 
 [component.job]
-source = "target/wasm32-wasi/release/job.wasm"
+source = "target/wasm32-wasip1/release/job.wasm"
 allowed_outbound_hosts = ["https://myip.fermyon.app/"]
-build = ["cargo component build --target wasm32-wasi --release"]
+build = ["cargo component build --target wasm32-wasip1 --release"]

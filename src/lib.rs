@@ -92,7 +92,7 @@ impl CommandTrigger {
         }
 
         let (instance, mut store) = instance_builder.instantiate(()).await?;
-        let func = wasmtime_wasi::bindings::Command::new(&mut store, &instance)?;
+        let func = wasmtime_wasi::p2::bindings::Command::new(&mut store, &instance)?;
         let func = func.wasi_cli_run();
         let _ = func.call_run(store).await?;
 

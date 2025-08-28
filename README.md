@@ -20,7 +20,7 @@ spin plugin install trigger-command
 The canary release of the command trigger plugin represents the most recent commits on `main` and may not be stable, with some features still in progress.
 
 ```sh
-spin plugins install --url https://github.com/fermyon/spin-trigger-command/releases/download/canary/trigger-command.json
+spin plugins install --url https://github.com/spinframework/spin-trigger-command/releases/download/canary/trigger-command.json
 ```
 
 ## Install from a local build

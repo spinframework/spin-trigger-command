@@ -6,7 +6,7 @@ edition = { workspace = true }
 rust-version = "1.86"
 
 [workspace.package]
-version = "0.4.0"
+version = "0.4.1"
 authors = ["Radu Matei <radu@fermyon.com>"]
 edition = "2021"
 
@@ -16,15 +16,15 @@ edition = "2021"
 anyhow = "1.0"
 clap = { version = "3.1.15", features = ["derive", "env"] }
 serde = "1.0"
-spin-trigger = { git = "https://github.com/spinframework/spin", tag = "v3.4.0" }
-spin-core = { git = "https://github.com/spinframework/spin", tag = "v3.4.0" }
-spin-telemetry = { git = "https://github.com/spinframework/spin", tag = "v3.4.0" }
-spin-factors = { git = "https://github.com/spinframework/spin", tag = "v3.4.0" }
-spin-factor-wasi = { git = "https://github.com/spinframework/spin", tag = "v3.4.0" }
-spin-runtime-factors = { git = "https://github.com/spinframework/spin", tag = "v3.4.0" }
+spin-trigger = { git = "https://github.com/spinframework/spin", tag = "v3.4.1" }
+spin-core = { git = "https://github.com/spinframework/spin", tag = "v3.4.1" }
+spin-telemetry = { git = "https://github.com/spinframework/spin", tag = "v3.4.1" }
+spin-factors = { git = "https://github.com/spinframework/spin", tag = "v3.4.1" }
+spin-factor-wasi = { git = "https://github.com/spinframework/spin", tag = "v3.4.1" }
+spin-runtime-factors = { git = "https://github.com/spinframework/spin", tag = "v3.4.1" }
 tokio = { version = "1", features = ["rt", "macros"] }
 tracing = { version = "0.1", features = ["log"] }
-wasmtime-wasi = "36.0.1"
+wasmtime-wasi = "36.0.2"
 
 [target.'cfg(target_os = "linux")'.dependencies]
 # This needs to be an explicit dependency to enable

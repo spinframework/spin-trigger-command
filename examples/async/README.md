@@ -20,8 +20,7 @@ You need to have the following installed on your machine:
 
 - Latest `spin` CLI
   - The `command` trigger plugin
-- Rust must be installed on your machine and the `wasm32-wasi` target
-  - `cargo-component`
+- Rust must be installed on your machine and the `wasm32-wasip2` target
 
 
 ## Compiling and running the sample

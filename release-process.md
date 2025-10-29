@@ -22,11 +22,11 @@ To cut a new release of the command trigger plugin, you will need to do the foll
     git push origin v0.1.0
     ```
 
-1. Pushing the tag upstream will trigger the [release action](https://github.com/spinframework/spin-trigger-command/actions/workflows/release.yml).
+1. Pushing the tag upstream will trigger the [build workflow](https://github.com/spinframework/spin-trigger-command/actions/workflows/build.yml).
     - The release build will create the packaged versions of the plugin, the updated plugin manifest and a checksums file
     - These assets are uploaded to a new GitHub release for the pushed tag
     - Release notes are auto-generated but edit as needed especially around breaking changes or other notable items
   
-1. Create a PR in the [spinframework/spin-plugins](https://github.com/spinframework/spin-plugins) repository with the [updated manifest](https://github.com/spinframework/spin-plugins/tree/main/manifests/command-trigger).
+1. Create a PR in the [spinframework/spin-plugins](https://github.com/spinframework/spin-plugins) repository with the [updated manifest](https://github.com/spinframework/spin-plugins/tree/main/manifests/trigger-command).
 
 1. If applicable, create PR(s) or coordinate [documentation](https://github.com/spinframework/spin-docs) needs, e.g. for new features or updated functionality.

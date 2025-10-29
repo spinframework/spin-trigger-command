@@ -4,7 +4,3 @@
 name = "hello_world"
 version = "0.1.0"
 edition = "2021"
-
-[dependencies]
-bitflags = "2.5.0"
-wit-bindgen-rt = "0.43.0"

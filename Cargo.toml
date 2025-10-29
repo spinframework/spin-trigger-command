@@ -7,7 +7,7 @@ rust-version = "1.86"
 
 [workspace.package]
 version = "0.4.1"
-authors = ["Radu Matei <radu@fermyon.com>"]
+authors = ["Spin Framework Contributors"]
 edition = "2021"
 
 [workspace]

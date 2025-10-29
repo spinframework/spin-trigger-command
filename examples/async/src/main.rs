@@ -1,8 +1,5 @@
 use spin_sdk::http::{send, RequestBuilder, Response};
 
-#[allow(warnings)]
-mod bindings;
-
 fn main() {
     spin_executor::run(async move {
         let req =

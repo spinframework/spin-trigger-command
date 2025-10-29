@@ -1,10 +1,10 @@
 spin_manifest_version = 2
 
 [application]
-name = "cron"
+name = "async-command"
 version = "0.1.0"
 authors = ["Spin Framework Contributors"]
-description = ""
+description = "A command trigger example that makes an async outbound request"
 
 [[trigger.command]]
 component = "job"

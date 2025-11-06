@@ -14,7 +14,7 @@ edition = "2021"
 
 [dependencies]
 anyhow = "1.0"
-clap = { version = "3.1.15", features = ["derive", "env"] }
+clap = { version = "3.2.25", features = ["derive", "env"] }
 serde = "1.0"
 spin-trigger = { git = "https://github.com/spinframework/spin", tag = "v3.5.0" }
 spin-core = { git = "https://github.com/spinframework/spin", tag = "v3.5.0" }
@@ -24,7 +24,7 @@ spin-factor-wasi = { git = "https://github.com/spinframework/spin", tag = "v3.5.
 spin-runtime-factors = { git = "https://github.com/spinframework/spin", tag = "v3.5.0" }
 tokio = { version = "1", features = ["rt", "macros"] }
 tracing = { version = "0.1", features = ["log"] }
-wasmtime-wasi = "37.0.1"
+wasmtime-wasi = "37.0.2"
 
 [target.'cfg(target_os = "linux")'.dependencies]
 # This needs to be an explicit dependency to enable

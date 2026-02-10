@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-spin-executor = "5.0.0"
-spin-sdk = "5.0.0"
+spin-executor = "5.2.0"
+spin-sdk = "5.2.0"
 
 [workspace]

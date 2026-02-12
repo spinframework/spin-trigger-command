@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: End-to-End Tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  e2e-test:
+    name: E2E Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.87
+          targets: wasm32-wasip2
+
+      - name: Install Spin
+        shell: bash
+        run: |
+            curl -fsSL https://spinframework.dev/downloads/install.sh | bash -s -- -v v3.6.0
+            mv spin /usr/local/bin/
+
+      - name: Install pluginify
+        shell: bash
+        run: spin plugins install --url https://github.com/itowlson/spin-pluginify/releases/download/canary/pluginify.json --yes
+
+      - name: Run E2E tests
+        run: ./test/e2e.sh

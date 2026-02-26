@@ -6,7 +6,7 @@ edition = { workspace = true }
 rust-version = "1.87"
 
 [workspace.package]
-version = "0.5.1"
+version = "0.5.2"
 authors = ["Spin Framework Contributors"]
 edition = "2021"
 

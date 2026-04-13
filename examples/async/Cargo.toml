@@ -4,7 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-spin-executor = "5.2.0"
-spin-sdk = "5.2.0"
+anyhow = "1.0.102"
+spin-sdk = { git = "https://github.com/spinframework/spin-rust-sdk" }
+tokio = { version = "1.51.1", features = ["macros", "rt"] }
 
 [workspace]

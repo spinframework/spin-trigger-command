@@ -1,10 +1,11 @@
-use spin_sdk::http::{send, RequestBuilder, Response};
+use spin_sdk::http::{EmptyBody, body::IncomingBodyExt, Request, send};
 
-fn main() {
-    spin_executor::run(async move {
-        let req =
-            RequestBuilder::new(spin_sdk::http::Method::Get, "https://myip.fermyon.app").build();
-        let res: Response = send(req).await.unwrap();
-        println!("Your IP is: {}", String::from_utf8_lossy(res.body()));
-    });
+#[tokio::main(flavor = "current_thread")]
+async fn main() -> anyhow::Result<()> {
+    let request = Request::get("https://myip.fermyon.app").body(EmptyBody::new())?;
+    let response = send(request).await?;
+    let response_bytes = response.into_body().bytes().await?;
+    let response_text = String::from_utf8_lossy(&response_bytes.as_ref());
+    println!("Your IP is: {}", response_text);
+    Ok(())
 }

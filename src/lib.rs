@@ -22,7 +22,7 @@ pub struct Component {
 #[derive(Args, Debug, Clone)]
 #[clap(trailing_var_arg(true))]
 pub struct CliArgs {
-    #[clap(multiple_values(true), allow_hyphen_values(true))]
+    #[clap(num_args(0..), allow_hyphen_values(true))]
     pub guest_args: Vec<String>,
 }
 
@@ -92,10 +92,13 @@ impl CommandTrigger {
         }
 
         let (instance, mut store) = instance_builder.instantiate(()).await?;
-        let func = wasmtime_wasi::p2::bindings::Command::new(&mut store, &instance)?;
+        let func = wasmtime_wasi::p3::bindings::Command::new(&mut store, &instance)?;
         let func = func.wasi_cli_run();
-        let _ = func.call_run(store).await?;
+        let result = store
+            .as_mut()
+            .run_concurrent(async |accessor| func.call_run(accessor).await)
+            .await??;
 
-        Ok(())
+        result.map_err(|_| anyhow::anyhow!("guest call failed"))
     }
 }

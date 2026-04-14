@@ -8,6 +8,6 @@ crate-type = ["cdylib"]
 
 [dependencies]
 anyhow = "1.0.102"
-spin-sdk = { git = "https://github.com/spinframework/spin-rust-sdk" }
+spin-sdk = "6"
 
 [workspace]

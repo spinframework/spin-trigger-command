@@ -92,13 +92,18 @@ impl CommandTrigger {
         }
 
         let (instance, mut store) = instance_builder.instantiate(()).await?;
-        let func = wasmtime_wasi::p3::bindings::Command::new(&mut store, &instance)?;
-        let func = func.wasi_cli_run();
-        let result = store
-            .as_mut()
-            .run_concurrent(async |accessor| func.call_run(accessor).await)
-            .await??;
-
-        result.map_err(|_| anyhow::anyhow!("guest call failed"))
+        if let Ok(func) = wasmtime_wasi::p3::bindings::Command::new(&mut store, &instance) {
+            let func = func.wasi_cli_run();
+            let result = store
+                .as_mut()
+                .run_concurrent(async |accessor| func.call_run(accessor).await)
+                .await??;
+            result.map_err(|_| anyhow::anyhow!("guest call failed"))
+        } else if let Ok(func) = wasmtime_wasi::p2::bindings::Command::new(&mut store, &instance) {
+            let result = func.wasi_cli_run().call_run(&mut store).await?;
+            result.map_err(|_| anyhow::anyhow!("guest call failed"))
+        } else {
+            Err(anyhow::anyhow!("component is not a command component"))
+        }
     }
 }

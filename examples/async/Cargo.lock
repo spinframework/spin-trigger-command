@@ -37,9 +37,9 @@ checksum = "72b3254f16251a8381aa12e40e3c4d2f0199f8c6508fbecb9d91f575e0fbb8c6"
 
 [[package]]
 name = "bitflags"
-version = "2.5.0"
+version = "2.11.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cf4b9d6a944f767f8e5e0db018570623c85f3d925ac718db4e06d0187adb21c1"
+checksum = "c4512299f36f043ab09a583e57bceb5a5aab7a73db1805848e8fef3c9e8c78b3"
 
 [[package]]
 name = "block-buffer"
@@ -276,18 +276,12 @@ dependencies = [
 
 [[package]]
 name = "hashbrown"
-version = "0.16.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "841d1cc9bed7f9236f321df977030373f4a4163ae1a7dbfe1a51a2c1a51d9100"
-dependencies = [
- "foldhash",
-]
-
-[[package]]
-name = "hashbrown"
 version = "0.17.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4f467dd6dccf739c208452f8014c75c18bb8301b050ad1cfb27153803edb0f51"
+dependencies = [
+ "foldhash",
+]
 
 [[package]]
 name = "heck"
@@ -375,7 +369,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d466e9454f08e4a911e14806c24e16fba1b4c121d1ea474396f396069cf949d9"
 dependencies = [
  "equivalent",
- "hashbrown 0.17.0",
+ "hashbrown",
  "serde",
  "serde_core",
 ]
@@ -673,9 +667,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "spin-macro"
+version = "6.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "11e483b94d5bcfac493caf0427fa875063e3e8604d0466a4ab491ec200a42857"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+]
+
+[[package]]
 name = "spin-sdk"
-version = "5.2.0"
-source = "git+https://github.com/spinframework/spin-rust-sdk#52b0dea988fb347e887b44b84ef4d181491f3c44"
+version = "6.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4fd2abac3eb2ee249c2241ab87f7b1287f36172c8cc1ea815c19c85e41ede44d"
 dependencies = [
  "anyhow",
  "bytes",
@@ -688,20 +694,10 @@ dependencies = [
  "rust_decimal",
  "serde",
  "serde_json",
- "spin-sdk-macro",
+ "spin-macro",
  "thiserror",
  "uuid",
  "wasip3",
-]
-
-[[package]]
-name = "spin-sdk-macro"
-version = "5.2.0"
-source = "git+https://github.com/spinframework/spin-rust-sdk#52b0dea988fb347e887b44b84ef4d181491f3c44"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 1.0.109",
 ]
 
 [[package]]
@@ -844,14 +840,15 @@ dependencies = [
 
 [[package]]
 name = "wasip3"
-version = "0.5.0+wasi-0.3.0-rc-2026-03-15"
-source = "git+https://github.com/bytecodealliance/wasi-rs#9d39023643c64a34f420beb2bca0aae950e29591"
+version = "0.6.0+wasi-0.3.0-rc-2026-03-15"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ed83456dd6a0b8581998c0365e4651fa2997e5093b49243b7f35391afaa7a3d9"
 dependencies = [
  "bytes",
  "http",
  "http-body",
  "thiserror",
- "wit-bindgen 0.54.0",
+ "wit-bindgen 0.57.1",
 ]
 
 [[package]]
@@ -901,9 +898,9 @@ dependencies = [
 
 [[package]]
 name = "wasm-encoder"
-version = "0.245.1"
+version = "0.247.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3f9dca005e69bf015e45577e415b9af8c67e8ee3c0e38b5b0add5aa92581ed5c"
+checksum = "30b6733b8b91d010a6ac5b0fb237dc46a19650bc4c67db66857e2e787d437204"
 dependencies = [
  "leb128fmt",
  "wasmparser",
@@ -911,9 +908,9 @@ dependencies = [
 
 [[package]]
 name = "wasm-metadata"
-version = "0.245.1"
+version = "0.247.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "da55e60097e8b37b475a0fa35c3420dd71d9eb7bd66109978ab55faf56a57efb"
+checksum = "665fe59e56cc9b419ca6fcca56673e3421d1a5011e3b65caf6b726fd9e041d10"
 dependencies = [
  "anyhow",
  "indexmap",
@@ -923,12 +920,12 @@ dependencies = [
 
 [[package]]
 name = "wasmparser"
-version = "0.245.1"
+version = "0.247.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4f08c9adee0428b7bddf3890fc27e015ac4b761cc608c822667102b8bfd6995e"
+checksum = "8e6fb4c2bee46c5ea4d40f8cdb5c131725cd976718ec56f1c8e82fbde5fa2a80"
 dependencies = [
  "bitflags",
- "hashbrown 0.16.1",
+ "hashbrown",
  "indexmap",
  "semver",
 ]
@@ -1000,19 +997,20 @@ checksum = "f17a85883d4e6d00e8a97c586de764dabcc06133f7f1d55dce5cdc070ad7fe59"
 
 [[package]]
 name = "wit-bindgen"
-version = "0.54.0"
+version = "0.57.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2bb00254d5051d69730ee32580b7373592f10ad786757c372f0f2c7b61f86a2c"
+checksum = "1ebf944e87a7c253233ad6766e082e3cd714b5d03812acc24c318f549614536e"
 dependencies = [
+ "bitflags",
  "futures",
  "wit-bindgen-rust-macro",
 ]
 
 [[package]]
 name = "wit-bindgen-core"
-version = "0.54.0"
+version = "0.57.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "99cdef5ccf0b0e9bf30868d6f9c5ed116c84ae95f84ba29d2216d3e922de3963"
+checksum = "02dee27a2dc20d1008016c742ec9fc6ea498492994ba3750be7454cbc97ff04c"
 dependencies = [
  "anyhow",
  "heck",
@@ -1021,9 +1019,9 @@ dependencies = [
 
 [[package]]
 name = "wit-bindgen-rust"
-version = "0.54.0"
+version = "0.57.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e76541e2f37ac1729db85765729daa0f3c2b5975d66699114d107525f6d6c8d5"
+checksum = "b5007dae772945b7a5003d69d90a3a4a78929d41f19d004e980c4259a6af4484"
 dependencies = [
  "anyhow",
  "heck",
@@ -1037,9 +1035,9 @@ dependencies = [
 
 [[package]]
 name = "wit-bindgen-rust-macro"
-version = "0.54.0"
+version = "0.57.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a284e17b2bc808c72ba008f6694626fa76bcac608b3d1ed0880f9add3f558f8e"
+checksum = "af9237d678e3513ad24e96fe98beacdc0db6405284ba2a2400418cf0d42caa89"
 dependencies = [
  "anyhow",
  "prettyplease",
@@ -1052,9 +1050,9 @@ dependencies = [
 
 [[package]]
 name = "wit-component"
-version = "0.245.1"
+version = "0.247.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4894f10d2d5cbc17c77e91f86a1e48e191a788da4425293b55c98b44ba3fcac9"
+checksum = "9d567162a6b9843080e5e0053f696623ff694bae8ae017c9ec536d1873bbe3d8"
 dependencies = [
  "anyhow",
  "bitflags",
@@ -1071,12 +1069,12 @@ dependencies = [
 
 [[package]]
 name = "wit-parser"
-version = "0.245.1"
+version = "0.247.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "330698718e82983499419494dd1e3d7811a457a9bf9f69734e8c5f07a2547929"
+checksum = "8ffe4064318cdf3c08cb99343b44c039fcefe61ccdf58aa9975285f13d74d1fc"
 dependencies = [
  "anyhow",
- "hashbrown 0.16.1",
+ "hashbrown",
  "id-arena",
  "indexmap",
  "log",

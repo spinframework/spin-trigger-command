@@ -3,9 +3,11 @@ name = "job"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+crate-type = ["cdylib"]
+
 [dependencies]
 anyhow = "1.0.102"
 spin-sdk = { git = "https://github.com/spinframework/spin-rust-sdk" }
-tokio = { version = "1.51.1", features = ["macros", "rt"] }
 
 [workspace]

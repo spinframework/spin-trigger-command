@@ -6,9 +6,25 @@ The sample app wraps async code (an outbound HTTP request) as shown below:
 
 
 ```rust
-spin_executor::run(async move {
+wasip3::cli::command::export!(Main);
+
+struct Main;
+
+impl wasip3::exports::cli::run::Guest for Main {
+    async fn run() -> Result<(), ()> {
+        match main().await {
+            Ok(()) => Ok(()),
+            Err(e) => {
+                eprintln!("{e}");
+                Err(())
+            }
+        }
+    }
+}
+
+async fn main() -> anyhow::Result<()> {
   // async code goes here
-})
+}
 ```
 
 Upon running the Spin App (using `spin up`) it will send an HTTP request to `https://myip.fermyon.app` and print your public IP address to `stdout`.

@@ -14,17 +14,17 @@ edition = "2021"
 
 [dependencies]
 anyhow = "1.0"
-clap = { version = "3.2.25", features = ["derive", "env"] }
+clap = { version = "4", features = ["derive", "env"] }
 serde = "1.0"
-spin-trigger = { git = "https://github.com/spinframework/spin", tag = "v3.6.3" }
-spin-core = { git = "https://github.com/spinframework/spin", tag = "v3.6.3" }
-spin-telemetry = { git = "https://github.com/spinframework/spin", tag = "v3.6.3" }
-spin-factors = { git = "https://github.com/spinframework/spin", tag = "v3.6.3" }
-spin-factor-wasi = { git = "https://github.com/spinframework/spin", tag = "v3.6.3" }
-spin-runtime-factors = { git = "https://github.com/spinframework/spin", tag = "v3.6.3" }
+spin-trigger = { git = "https://github.com/spinframework/spin", rev = "5f3aa19c50d1609592f7ea2f6362209a04da52ac" }
+spin-core = { git = "https://github.com/spinframework/spin", rev = "5f3aa19c50d1609592f7ea2f6362209a04da52ac" }
+spin-telemetry = { git = "https://github.com/spinframework/spin", rev = "5f3aa19c50d1609592f7ea2f6362209a04da52ac" }
+spin-factors = { git = "https://github.com/spinframework/spin", rev = "5f3aa19c50d1609592f7ea2f6362209a04da52ac" }
+spin-factor-wasi = { git = "https://github.com/spinframework/spin", rev = "5f3aa19c50d1609592f7ea2f6362209a04da52ac" }
+spin-runtime-factors = { git = "https://github.com/spinframework/spin", rev = "5f3aa19c50d1609592f7ea2f6362209a04da52ac" }
 tokio = { version = "1", features = ["rt", "macros"] }
 tracing = { version = "0.1", features = ["log"] }
-wasmtime-wasi = "42.0.2"
+wasmtime-wasi = { version = "43", features = ["p2", "p3"] }
 
 [target.'cfg(target_os = "linux")'.dependencies]
 # This needs to be an explicit dependency to enable

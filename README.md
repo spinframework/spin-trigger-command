@@ -1,5 +1,10 @@
 # Spin `command` Trigger
 
+> [!IMPORTANT]
+> **This repository has been archived.**
+>
+> This repository has been consolidated into the repository at [spinframework/spin-trigger-plugins](https://github.com/spinframework/spin-trigger-plugins). Please file issues and contribute there going forward.
+
 This is a very simple Spin trigger that executes the WASI main function.
 
 ## Installation
